@@ -1,0 +1,40 @@
+<div class="row justify-content-center">
+    <div class="mt-4 col-lg-4 " style="text-align: center;">
+        <div class="form-login">
+            <form method="POST" action="/account/login">
+                <div class="mb-3">
+                    <label for="search-input" class="form-label mt-4">Tài khoản</label><br>
+                    <input type="text" name="user" placeholder="Tài khoản ..." id="login-user"><br>
+                    <label for="search-input" class="form-label mt-4">Password</label><br>
+                    <input type="text" name="password" placeholder="Password ..." id="login-password"><br>
+                    <p id='error-mess' class="mt-4"></p>
+                </div>
+                <button type="button" class="btn btn-primary mt-4 form-btn" id="login-btn">Đăng
+                    nhập</button>
+            </form>
+            <button type="button" class="btn btn-secondary mt-4 form-btn" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Đăng ký
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content" style="height: 300px;">
+                        <form method="POST" action="/account/signUp">
+                            <div class="mb-3">
+                                <label class="form-label mt-4">Tên tài khoản</label><br>
+                                <input type="text" name="user" placeholder="Tài khoản ..."><br>
+                                <label class="form-label mt-4">Password</label><br>
+                                <input type="text" name="password" placeholder="Password ..."><br>
+                            </div>
+                            <button type="submit" class="btn btn-secondary mt-4 form-btn">Đăng ký</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/account.js"></script>
