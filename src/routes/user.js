@@ -3,7 +3,7 @@ const router = express.Router();
 const UserController = require('../app/controller/UserController');
 
 router.get('/stored/courses' ,UserController.storedCourses);
-// router.get('/stored', UserController.stored);
+router.post('/stored/courses', UserController.stored);
 
 
 

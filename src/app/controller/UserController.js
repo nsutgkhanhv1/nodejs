@@ -19,18 +19,30 @@ class UserController{
             console.log(err);
         })
     }
-    // //[GET] /user/stored
-    // stored(req,res){
-    //     const id = req.cookies.token;
-    //     const idUser = jwt.verify(id,"id").token;
-    //     Account.findById(idUser)
-    //     .then(data=>{
-    //         res.json(data);
-    //     })
-    //     .catch(err=>{
-    //         console.log(err);
-    //     })
-    // }
+    //[POST] /user/stored/courses
+    stored(req,res){
+        try {
+            const id = req.cookies.token;
+            const idUser = jwt.verify(id,"id").token;
+            Account.findById(idUser)
+            .then(data=>{
+                if(data){
+                    res.status(200).json(data);
+                }
+                else{
+                    res.status(200).json({
+                        mess: 'Please Login'
+                    })
+                }
+            })
+            .catch(err=>{
+                console.log(err);
+            })
+        } catch (error) {
+            res.json('Chua dang nhap');
+        }
+
+    }
 }
 
 module.exports = new UserController;

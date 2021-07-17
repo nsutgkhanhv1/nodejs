@@ -1,7 +1,6 @@
 const Account = require('../models/Account');
 const jwt = require("jsonwebtoken");
 class AccountController{
-
     //[GET] /account
     index(req,res,next){
         res.render('account');
@@ -19,6 +18,7 @@ class AccountController{
                     mess: "Login Success",
                     id : jwt.sign({token: user._id},'id',{expiresIn: '1h'})
                 });
+                loginData = user.name;
             }
             else{
                 res.json({

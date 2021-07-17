@@ -15,7 +15,6 @@ function Login() {
             if (data.mess == "Login Success") {
                 setCookie("token", data.id, 1);
                 window.location.href = "http://localhost:3000/user/stored/courses";
-
             }
             else {
                 $('#error-mess').text(data.mess);
