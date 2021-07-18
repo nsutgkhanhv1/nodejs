@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const Handlebars = require('handlebars');
 const handlebars = require('express-handlebars');
 const route = require('./routes');
+const methodOverride = require('method-override')
 const db = require('./config/db');
 var cookieParser = require('cookie-parser')
 const { allowInsecurePrototypeAccess } = require('@handlebars/allow-prototype-access');
@@ -19,6 +20,8 @@ app.use(express.urlencoded({
 app.use(express.json())
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(methodOverride('_method'));
 
 //http logger
 app.use(morgan('combined'));

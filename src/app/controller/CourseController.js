@@ -35,6 +35,26 @@ class CourseController{
             }
         })
     }
+    //[GET] /:id/edit
+    showEditCourse(req,res,next){
+        Course.findById(req.params.id)
+        .then(data=>{
+            res.render('courses/edit',{data});
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+    //[PUT] /:id/edit
+    editCourse(req,res,next){
+        Course.updateOne({_id: req.params.id},req.body)
+        .then(data=>{
+            res.redirect('/');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
 }
 
 module.exports = new CourseController;

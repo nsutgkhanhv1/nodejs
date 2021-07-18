@@ -8,28 +8,19 @@ $.ajax({
 
         }
         else if(data.name){
-            localStorage.setItem('loginData',data.name);
-
+            setHeader(data.name);
         }
     })
     .catch((err) => {
         console.log("Chua dang nhap")
     })
-const loginData = localStorage.getItem('loginData');
-const token = document.cookie;
-if(!token){
-    $('#header-right-btn-gr').html(`<div class="btn-group">
-    <a href="/account" class="btn btn-primary active">Đăng nhập</a>
-    <a href="/account" class="btn btn-primary">Đăng ký</a>
-  </div>`);
-}
-else{
+function setHeader(data){
     $('#header-right-btn-gr').html(`
     <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
             data-bs-toggle="dropdown" aria-expanded="false">
             <img src="/img/khan.jpg" alt="avt" class="user-avt">
-            <span>${loginData}</span>
+            <span>${data}</span>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
             <li><a class="dropdown-item" href="/user/stored/courses">Khóa học của tôi</a></li>
@@ -37,4 +28,12 @@ else{
             <div class="dropdown-divider"></div>
             <li><button class="dropdown-item" id='logout'>Đăng xuất</button></li>
         </ul>`);
+    function logOut() {
+        delete_cookie("token");
+        window.location.href = "http://localhost:3000/"
+    }
+    $('#logout').on('click',logOut);
+    function delete_cookie(name) {
+        document.cookie = name + "=; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+    }
 }

@@ -6,7 +6,6 @@ const Course = new Schema({
     description: {type: String, maxLength: 600},
     image: {type: String},
     level: {type: String},
-    account: {type : Schema.Types.ObjectId, ref:'Account'},
     createAt: {type: Date, default: Date.now},
     updateAt: {type: Date, default: Date.now},
     slug: {type: String},
